@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2de911ef4997a28498ef6e02da92de51
+timeCreated: 1479957332
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - obstaculoPrefab: {fileID: 1000010443870150, guid: c0c3263f4aedca3419736a745c349040,
+      type: 2}
+  - foguete: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

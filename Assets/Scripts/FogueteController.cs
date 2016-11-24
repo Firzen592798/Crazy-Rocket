@@ -20,7 +20,6 @@ public class FogueteController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		impulsoAtual = 10 * (1 - Mathf.Max(_nextImpulso - Time.time, 0));
-		print(10 * (1 - Mathf.Max(_nextImpulso - Time.time, 0)));
 		if (Input.GetMouseButton(0)) {
 			if (Time.time > _nextImpulso) {
 				_targetPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
