@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour {
 	public GameObject obstaculoPrefab;
 	public GameObject foguete;
 	private int _killer;
-	private float _size = 0.5f;
+	private float _size = 0.1f;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +22,7 @@ public class Spawner : MonoBehaviour {
 			obstaculo.transform.position = transform.position - (Random.Range(0f, 1f) * Vector3.up) - (Random.Range(-2f, 2f) * Vector3.left);
 			_killer++;
 		}
+
 		obstaculo.transform.position = transform.position - (Random.Range (0f, 1f) * Vector3.up) - (Random.Range(-2f, 2f) * Vector3.left);
 
 		float tamanho = Random.Range (0.5f, 2f);
