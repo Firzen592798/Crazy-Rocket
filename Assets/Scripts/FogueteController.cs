@@ -12,6 +12,10 @@ public class FogueteController : MonoBehaviour {
 	public float impulsoCheio = 10;
 	public Texture contorno, barraImpulso;
 
+	//----------------------------
+	public TrocandoSprites _TrocandoSprites;
+	//-----------------------------
+
 	void OnGUI(){
 		GUI.DrawTexture (new Rect (Screen.width / 27, Screen.height / 25, Screen.width / 8.5f/impulsoCheio*impulsoAtual, Screen.height / 25), barraImpulso);
 		GUI.DrawTexture (new Rect (Screen.width / 30, Screen.height / 40, Screen.width / 8, Screen.height / 15), contorno);
@@ -37,6 +41,8 @@ public class FogueteController : MonoBehaviour {
 		} else if (impulsoAtual <= 0) {
 			impulsoAtual = 0;
 		}
+
+
 	}
 
 
