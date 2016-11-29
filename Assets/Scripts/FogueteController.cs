@@ -17,8 +17,8 @@ public class FogueteController : MonoBehaviour {
 	//-----------------------------
 
 	void OnGUI(){
-		GUI.DrawTexture (new Rect (Screen.width / 27, Screen.height / 25, Screen.width / 8.5f/impulsoCheio*impulsoAtual, Screen.height / 25), barraImpulso);
-		GUI.DrawTexture (new Rect (Screen.width / 30, Screen.height / 40, Screen.width / 8, Screen.height / 15), contorno);
+		GUI.DrawTexture (new Rect (Screen.width / 27, Screen.height / 25, Screen.width / 8.5f/impulsoCheio*impulsoAtual, Screen.height / 35), barraImpulso);
+		GUI.DrawTexture (new Rect (Screen.width / 30, Screen.height / 40, Screen.width / 8, Screen.height / 17), contorno);
 	}
 
 	// Update is called once per frame
@@ -41,11 +41,5 @@ public class FogueteController : MonoBehaviour {
 		} else if (impulsoAtual <= 0) {
 			impulsoAtual = 0;
 		}
-
-
 	}
-
-
-
-
 }

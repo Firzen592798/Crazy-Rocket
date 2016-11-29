@@ -2,12 +2,12 @@
 using System.Collections;
 
 public class MenuController : MonoBehaviour {
-	public TextMesh jogar;
-	public TextMesh sobre;
+	//public TextMesh jogar;
+	//public TextMesh sobre;
 	// Use this for initialization
 	void Start () {
-		jogar = jogar.GetComponent<TextMesh> ();
-		sobre = sobre.GetComponent<TextMesh> ();
+		//jogar = jogar.GetComponent<TextMesh> ();
+		//sobre = sobre.GetComponent<TextMesh> ();
 	}
 	
 	// Update is called once per frame
@@ -20,5 +20,8 @@ public class MenuController : MonoBehaviour {
 	}
 	public void Sobre(){
 		Application.LoadLevel ("Sobre");
+	}
+	public void Voltar(){
+		Application.LoadLevel ("Menu");
 	}
 }
