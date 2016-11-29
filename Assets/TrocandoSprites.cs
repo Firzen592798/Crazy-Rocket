@@ -60,6 +60,8 @@ public class TrocandoSprites : MonoBehaviour {
 
 	public void Subindo ()
 	{
+
+		Debug.Log( "subindo ScriptTrocando" );
 		//if (spriteRenderer.sprite == spriteparado) // if the spriteRenderer sprite = sprite1 then change to sprite2
 		//{
 			spriteRenderer.sprite = spritesubindo;
@@ -74,6 +76,7 @@ public class TrocandoSprites : MonoBehaviour {
 	{
 		//if (spriteRenderer.sprite == spriteparado) // if the spriteRenderer sprite = sprite1 then change to sprite2
 		//{
+		Debug.Log( "descendo ScriptTrocando" );
 			spriteRenderer.sprite = spritedescendo;
 		//}
 		//else
