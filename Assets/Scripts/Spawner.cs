@@ -15,13 +15,13 @@ public class Spawner : MonoBehaviour {
 
 	void Spawn() {
 		GameObject obstaculo = GameObject.Instantiate (obstaculoPrefab) as GameObject;
-		if (_killer == 3) {
-			_killer = 0;
-			obstaculo.transform.position = new Vector3(transform.position.x, foguete.transform.position.x);
-		}else{
-			obstaculo.transform.position = transform.position - (Random.Range(0f, 1f) * Vector3.up) - (Random.Range(-2f, 2f) * Vector3.left);
-			_killer++;
-		}
+		//if (_killer == 3) {
+		//	_killer = 0;
+		//	obstaculo.transform.position = new Vector3(transform.position.x, foguete.transform.position.x);
+		//}else{
+			obstaculo.transform.position = transform.position - (Random.Range(-1.0f, 0.0f) * Vector3.up) - (Random.Range(-2f, 2f) * Vector3.left);
+		//	_killer++;
+		//}
 
 		//obstaculo.transform.position = transform.position - (Random.Range (0f, 1f) * Vector3.up) - (Random.Range(-2f, 2f) * Vector3.left);
 

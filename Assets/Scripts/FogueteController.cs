@@ -7,10 +7,10 @@ public class FogueteController : MonoBehaviour {
 	private float _nextImpulso = 0f;
 	private bool _moving = false;
 	private Vector3 _targetPos;
-
+	public int lives = 3;
 	private float impulsoAtual = 8;
 	public float impulsoCheio = 10;
-	public Texture contorno, barraImpulso;
+	public Texture contorno, barraImpulso, life;
 
 	//----------------------------
 	public TrocandoSprites _TrocandoSprites;
@@ -19,6 +19,11 @@ public class FogueteController : MonoBehaviour {
 	void OnGUI(){
 		GUI.DrawTexture (new Rect (Screen.width / 27, Screen.height / 25, Screen.width / 8.5f/impulsoCheio*impulsoAtual, Screen.height / 35), barraImpulso);
 		GUI.DrawTexture (new Rect (Screen.width / 30, Screen.height / 40, Screen.width / 8, Screen.height / 17), contorno);
+		for (int i = 0; i < lives; i++) {
+			GUI.DrawTexture (new Rect (Screen.width / 5 + (i * 60), Screen.height / 60, Screen.width / 8, Screen.height / 17), life);
+		}
+
+
 	}
 
 	// Update is called once per frame
@@ -40,6 +45,12 @@ public class FogueteController : MonoBehaviour {
 			impulsoAtual = impulsoCheio;
 		} else if (impulsoAtual <= 0) {
 			impulsoAtual = 0;
+		}
+	}
+
+	void OnTriggerEnter2D (Collider2D col) {
+		if (col.CompareTag ("Wall")) {
+			this.transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		}
 	}
 }
