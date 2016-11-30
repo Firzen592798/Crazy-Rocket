@@ -37,7 +37,7 @@ public class Spawner : MonoBehaviour {
 	}
 
 	public void PrepararDividir(GameObject gameObject){
-		Invoke ("Dividir", Random.Range (1f, 3.0f));
+		Invoke ("Dividir", Random.Range (1.0f, 3.0f));
 	}
 
 	void Dividir(GameObject gameObject) {
