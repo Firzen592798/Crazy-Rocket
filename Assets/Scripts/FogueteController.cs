@@ -102,5 +102,8 @@ public class FogueteController : MonoBehaviour
 		}
 	}
 
+	public void StopSound(){
+		GetComponent<AudioSource> ().Stop ();
+	}
 
 }

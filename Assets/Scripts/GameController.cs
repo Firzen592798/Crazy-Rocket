@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
 	private int score;
 	private bool gameOver;
 	private bool restartClick;
+	public AudioClip explosao, colisao;
 	// Use this for initialization
 	void Start () {
 		score = 0;
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void GameOver(){
+		GetComponent<AudioSource>().PlayOneShot (explosao, 1.0f);
 		Time.timeScale = 0;
 		restart = true;
 		gameOverText.text = "Game Over. \nToque em qualquer lugar\n da tela para reiniciar";
@@ -42,5 +44,7 @@ public class GameController : MonoBehaviour {
 		score++;
 		scoreText.text = "Score: "+score;
 	}
-
+	public void SomColisao(){
+		GetComponent<AudioSource>().PlayOneShot (colisao, 1.0f);
+	}
 }

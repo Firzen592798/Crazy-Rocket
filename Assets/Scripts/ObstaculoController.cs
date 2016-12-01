@@ -7,9 +7,12 @@ public class ObstaculoController : MonoBehaviour {
 	private GameController gameController;
 	private Spawner spawner;
 	private FogueteController fogueteController;
-	private float velocidadeX = 0.0f	;
+	private float velocidadeX = 0.0f;
+	//private AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
+		//audioSource = this.GetComponent<AudioSource> ();
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		GameObject spawnerObject = GameObject.FindWithTag ("Spawner");
 		GameObject fogueteObject = GameObject.FindWithTag ("Player");
@@ -39,13 +42,18 @@ public class ObstaculoController : MonoBehaviour {
 		}
 		if (col.CompareTag ("Player")) {
 			fogueteController.lives--;
-			Destroy (gameObject);
 			if (fogueteController.lives == 0) {
+				//GetComponent<AudioSource>().PlayOneShot (explosao, 1.0f);
 				gameController.GameOver ();
+				fogueteController.StopSound ();
+			} else {
+				gameController.SomColisao();
+				//GetComponent<AudioSource>().PlayOneShot (impacto, 1.0f);
 			}
+			Destroy (gameObject);
 		}
 	}
-
+		
 	void SpeedUp() {
 		//speed *= 1.25f;
 	}
