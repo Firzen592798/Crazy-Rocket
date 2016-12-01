@@ -12,6 +12,28 @@ public class TrocandoSprites : MonoBehaviour {
 	public Sprite spritetrassubindo;
 	public Sprite spritefreando;
 
+//-----------------------------
+	public Sprite spritedestroindo0;
+	public Sprite spritedestroindo1;
+	public Sprite spritedestroindo2;
+	public Sprite spritedestroindo3;
+	public Sprite spritedestroindo4;
+	public Sprite spritedestroindo5;
+	public Sprite spritedestroindo6;
+	public Sprite spritedestroindo7;
+	public Sprite spritedestroindo8;
+	public Sprite spritedestroindo9;
+	public Sprite spritedestroindo10;
+	public Sprite spritedestroindo11;
+	public Sprite spritedestroindo12;
+	public Sprite spritedestroindo13;
+	public Sprite spritedestroindo14;
+	public Sprite spritedestroindo15;
+	public Sprite spritedestroindo16;
+
+
+//-----------------------------
+
 
 
 	private SpriteRenderer spriteRenderer; 
@@ -55,13 +77,17 @@ public class TrocandoSprites : MonoBehaviour {
 		{
 			TrazDescendo (); // call method to change sprite
 		}
+		if (Input.GetKeyDown (KeyCode.CapsLock)) // If the space bar is pushed down
+		{
+			Destruindo (); // call method to change sprite
+		}
 
 	}
 
 	public void Subindo ()
 	{
 
-		Debug.Log( "subindo ScriptTrocando" );
+		//Debug.Log( "subindo ScriptTrocando" );
 		//if (spriteRenderer.sprite == spriteparado) // if the spriteRenderer sprite = sprite1 then change to sprite2
 		//{
 			spriteRenderer.sprite = spritesubindo;
@@ -76,7 +102,7 @@ public class TrocandoSprites : MonoBehaviour {
 	{
 		//if (spriteRenderer.sprite == spriteparado) // if the spriteRenderer sprite = sprite1 then change to sprite2
 		//{
-		Debug.Log( "descendo ScriptTrocando" );
+		//Debug.Log( "descendo ScriptTrocando" );
 			spriteRenderer.sprite = spritedescendo;
 		//}
 		//else
@@ -118,6 +144,19 @@ public class TrocandoSprites : MonoBehaviour {
 	public void TrazDescendo ()
 	{
 		spriteRenderer.sprite = spritetrasdescendo; // otherwise change it back to sprite1
+
+	}
+
+	public void Destruindo ()
+	{
+
+
+		spriteRenderer.sprite = spritedestroindo0;
+		//spriteRenderer.sprite = spritedestroindo1;
+		//spriteRenderer.sprite = spritedestroindo2;
+
+
+
 
 	}
 
