@@ -52,14 +52,14 @@ public class FogueteController : MonoBehaviour
 				{
 
 					_TrocandoSprites.Descendo();
-					Debug.Log( "descendo" );
+					//Debug.Log( "descendo" );
 
 
 				}else if( _targetPos.y > transform.position.y )
 				{
 
 					_TrocandoSprites.Subindo();
-					Debug.Log( "subindo" );
+					//Debug.Log( "subindo" );
 
 				}
 
