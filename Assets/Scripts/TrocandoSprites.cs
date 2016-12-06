@@ -13,7 +13,6 @@ public class TrocandoSprites : MonoBehaviour {
 	public Sprite spritefreando;
 
 
-
 	private SpriteRenderer spriteRenderer; 
 
 	void Start ()
@@ -120,5 +119,4 @@ public class TrocandoSprites : MonoBehaviour {
 		spriteRenderer.sprite = spritetrasdescendo; // otherwise change it back to sprite1
 
 	}
-
 }

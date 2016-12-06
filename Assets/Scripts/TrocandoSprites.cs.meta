@@ -1,10 +1,19 @@
 fileFormatVersion: 2
 guid: 4b8854f4e11845e488164d7ce0e08cb6
-timeCreated: 1480342716
+timeCreated: 1480992465
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - spriteparado: {instanceID: 0}
+  - spritesubindo: {instanceID: 0}
+  - spritedescendo: {instanceID: 0}
+  - spritefrentedescendo: {instanceID: 0}
+  - spritefrentesubindo: {instanceID: 0}
+  - spritetrasdescendo: {instanceID: 0}
+  - spritetrassubindo: {instanceID: 0}
+  - spritefreando: {instanceID: 0}
+  - spriteExplosao: {fileID: 21300000, guid: aa495f7df3db9e74eabd480129dad809, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

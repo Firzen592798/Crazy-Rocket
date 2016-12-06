@@ -32,7 +32,6 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void GameOver(){
-		GetComponent<AudioSource>().PlayOneShot (explosao, 1.0f);
 		Time.timeScale = 0;
 		restart = true;
 		gameOverText.text = "Game Over. \nToque em qualquer lugar\n da tela para reiniciar";

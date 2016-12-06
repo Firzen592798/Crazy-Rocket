@@ -8,14 +8,16 @@ public class ObstaculoController : MonoBehaviour {
 	private Spawner spawner;
 	private FogueteController fogueteController;
 	private float velocidadeX = 0.0f;
-	//private AudioSource audioSource;
+	public GameObject explosaoPrefab;
+	private GameObject fogueteObject;
+	public AudioClip explosaoSom;
 
 	// Use this for initialization
 	void Start () {
 		//audioSource = this.GetComponent<AudioSource> ();
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		GameObject spawnerObject = GameObject.FindWithTag ("Spawner");
-		GameObject fogueteObject = GameObject.FindWithTag ("Player");
+		fogueteObject = GameObject.FindWithTag ("Player");
 		gameController = gameControllerObject.GetComponent<GameController> ();
 		spawner = spawnerObject.GetComponent<Spawner> ();
 		fogueteController = fogueteObject.GetComponent<FogueteController>();
@@ -44,8 +46,14 @@ public class ObstaculoController : MonoBehaviour {
 			fogueteController.lives--;
 			if (fogueteController.lives == 0) {
 				//GetComponent<AudioSource>().PlayOneShot (explosao, 1.0f);
-				gameController.GameOver ();
-				fogueteController.StopSound ();
+				GameObject explosao = GameObject.Instantiate (explosaoPrefab) as GameObject;
+				explosao.transform.position = fogueteObject.transform.position;
+				GetComponent<AudioSource>().PlayOneShot (explosaoSom, 1.0f);
+				//Destroy(fogueteObject);
+				fogueteObject.SetActive(false);
+				gameController.Invoke("GameOver", 1f);
+
+				fogueteController.StopSound ();	
 			} else {
 				gameController.SomColisao();
 				//GetComponent<AudioSource>().PlayOneShot (impacto, 1.0f);

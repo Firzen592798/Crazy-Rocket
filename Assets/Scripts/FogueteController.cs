@@ -13,7 +13,6 @@ public class FogueteController : MonoBehaviour
 	private float impulsoAtual = 8;
 	public float impulsoCheio = 10;
 	public Texture contorno, barraImpulso, life;
-
 	//----------------------------
 	public TrocandoSprites _TrocandoSprites;
 	//-----------------------------
