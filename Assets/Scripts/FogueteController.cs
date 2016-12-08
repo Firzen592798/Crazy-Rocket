@@ -6,13 +6,15 @@ public class FogueteController : MonoBehaviour
 	
 	public float moveSpeed = 40f;
 	public float tempoImpulso = 1f;
+	public GameObject explosaoPrefab;
 	private float _nextImpulso = 0f;
 	private bool _moving = false;
 	private Vector3 _targetPos;
-	public int lives = 3;
+	//public int lives = 3;
 	private float impulsoAtual = 8;
 	public float impulsoCheio = 10;
 	public Texture contorno, barraImpulso, life;
+	private GameController gameController;
 	//----------------------------
 	public TrocandoSprites _TrocandoSprites;
 	//-----------------------------
@@ -22,7 +24,7 @@ public class FogueteController : MonoBehaviour
 		
 		GUI.DrawTexture (new Rect (Screen.width / 27, Screen.height / 25, Screen.width / 8.5f/impulsoCheio*impulsoAtual, Screen.height / 35), barraImpulso);
 		GUI.DrawTexture (new Rect (Screen.width / 30, Screen.height / 40, Screen.width / 8, Screen.height / 17), contorno);
-		for (int i = 0; i < lives; i++) {
+		for (int i = 0; i < gameController.lives; i++) {
 			GUI.DrawTexture (new Rect (Screen.width / 5 + (i * 60), Screen.height / 60, Screen.width / 8, Screen.height / 17), life);
 		}
 	}
@@ -30,6 +32,12 @@ public class FogueteController : MonoBehaviour
 
 	//------
 	float timeLeft = 2;
+
+	void Start(){
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		gameController = gameControllerObject.GetComponent<GameController> ();
+	}
+
 	//------
 	// Update is called once per frame
 	void Update () 
@@ -74,12 +82,9 @@ public class FogueteController : MonoBehaviour
 
 		if( impulsoAtual >= impulsoCheio ) 
 		{
-			
 			impulsoAtual = impulsoCheio;
-
 		}else if (impulsoAtual <= 0) 
 		{
-			
 			impulsoAtual = 0;
 
 		}
@@ -101,8 +106,10 @@ public class FogueteController : MonoBehaviour
 		}
 	}
 
-	public void StopSound(){
-		GetComponent<AudioSource> ().Stop ();
+	public void explodir(){
+		GameObject explosao = GameObject.Instantiate (explosaoPrefab) as GameObject;
+		explosao.transform.position = transform.position;
+		Destroy (gameObject);
+		
 	}
-
 }

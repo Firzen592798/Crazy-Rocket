@@ -6,21 +6,17 @@ public class ObstaculoController : MonoBehaviour {
 	public float speed;
 	private GameController gameController;
 	private Spawner spawner;
-	private FogueteController fogueteController;
 	private float velocidadeX = 0.0f;
 	public GameObject explosaoPrefab;
 	private GameObject fogueteObject;
-	public AudioClip explosaoSom;
 
 	// Use this for initialization
 	void Start () {
 		//audioSource = this.GetComponent<AudioSource> ();
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		GameObject spawnerObject = GameObject.FindWithTag ("Spawner");
-		fogueteObject = GameObject.FindWithTag ("Player");
 		gameController = gameControllerObject.GetComponent<GameController> ();
 		spawner = spawnerObject.GetComponent<Spawner> ();
-		fogueteController = fogueteObject.GetComponent<FogueteController>();
 		if (velocidadeX == 0) {
 			velocidadeX = Random.Range (-0.2f, 0.2f);
 		}
@@ -39,21 +35,17 @@ public class ObstaculoController : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.CompareTag ("Wall")) {
 			gameController.Ponto();
-			print ("LOL");
 			Destroy (gameObject);
 		}
 		if (col.CompareTag ("Player")) {
-			fogueteController.lives--;
-			if (fogueteController.lives == 0) {
+			gameController.lives--;
+			if (gameController.lives == 0) {
 				//GetComponent<AudioSource>().PlayOneShot (explosao, 1.0f);
-				GameObject explosao = GameObject.Instantiate (explosaoPrefab) as GameObject;
-				explosao.transform.position = fogueteObject.transform.position;
-				GetComponent<AudioSource>().PlayOneShot (explosaoSom, 1.0f);
-				//Destroy(fogueteObject);
-				fogueteObject.SetActive(false);
-				gameController.Invoke("GameOver", 1f);
 
-				fogueteController.StopSound ();	
+
+				gameController.Invoke("GameOver", 0f);
+
+				gameController.StopSound ();	
 			} else {
 				gameController.SomColisao();
 				//GetComponent<AudioSource>().PlayOneShot (impacto, 1.0f);

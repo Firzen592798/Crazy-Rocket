@@ -6,11 +6,15 @@ public class GameController : MonoBehaviour {
 	public GUIText scoreText;
 	public bool restart;
 	private int score;
+	public int lives = 3;
 	private bool gameOver;
 	private bool restartClick;
 	public AudioClip explosao, colisao;
+	FogueteController fogueteController;
 	// Use this for initialization
 	void Start () {
+		GameObject fogueteObject = GameObject.FindWithTag ("Player");
+		fogueteController = fogueteObject.GetComponent<FogueteController>();
 		score = 0;
 		gameOver = false;
 		restart = false;
@@ -18,7 +22,8 @@ public class GameController : MonoBehaviour {
 		gameOverText.text = "";
 		scoreText.text = "Score: 0";
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
 		if (restart) {
@@ -32,7 +37,12 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void GameOver(){
-		Time.timeScale = 0;
+		GetComponent<AudioSource>().PlayOneShot (explosao, 1.0f);
+
+		fogueteController.explodir();
+
+		//WaitForSeconds (1);
+		//Time.timeScale = 0;
 		restart = true;
 		gameOverText.text = "Game Over. \nToque em qualquer lugar\n da tela para reiniciar";
 		gameOver = true;
@@ -45,5 +55,9 @@ public class GameController : MonoBehaviour {
 	}
 	public void SomColisao(){
 		GetComponent<AudioSource>().PlayOneShot (colisao, 1.0f);
+	}
+
+	public void StopSound(){
+		GetComponent<AudioSource> ().Stop ();
 	}
 }
