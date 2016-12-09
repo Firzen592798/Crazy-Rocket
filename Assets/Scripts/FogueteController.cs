@@ -8,12 +8,14 @@ public class FogueteController : MonoBehaviour
 	public float tempoImpulso = 1f;
 	public GameObject explosaoPrefab;
 	private float _nextImpulso = 0f;
+	private float _timeBuff;
 	private bool _moving = false;
 	private Vector3 _targetPos;
 	//public int lives = 3;
 	private float impulsoAtual = 8;
+	private bool temBuffImpulso = false;
 	public float impulsoCheio = 10;
-	public Texture contorno, barraImpulso, life;
+	public Texture contorno, barraImpulso, life, barraImpulsoBuff;
 	private GameController gameController;
 	//----------------------------
 	public TrocandoSprites _TrocandoSprites;
@@ -21,8 +23,11 @@ public class FogueteController : MonoBehaviour
 
 	void OnGUI()
 	{
-		
-		GUI.DrawTexture (new Rect (Screen.width / 27, Screen.height / 25, Screen.width / 8.5f/impulsoCheio*impulsoAtual, Screen.height / 35), barraImpulso);
+		if (temBuffImpulso) {
+			GUI.DrawTexture (new Rect (Screen.width / 27, Screen.height / 25, Screen.width / 8.5f / impulsoCheio * impulsoAtual, Screen.height / 35), barraImpulsoBuff);
+		} else {
+			GUI.DrawTexture (new Rect (Screen.width / 27, Screen.height / 25, Screen.width / 8.5f/impulsoCheio*impulsoAtual, Screen.height / 35), barraImpulso);
+		}
 		GUI.DrawTexture (new Rect (Screen.width / 30, Screen.height / 40, Screen.width / 8, Screen.height / 17), contorno);
 		for (int i = 0; i < gameController.lives; i++) {
 			GUI.DrawTexture (new Rect (Screen.width / 5 + (i * 60), Screen.height / 60, Screen.width / 8, Screen.height / 17), life);
@@ -43,7 +48,7 @@ public class FogueteController : MonoBehaviour
 	void Update () 
 	{
 		
-		impulsoAtual = 10 * (1 - Mathf.Max(_nextImpulso - Time.time, 0));
+		impulsoAtual = 10/tempoImpulso * (tempoImpulso - Mathf.Max(_nextImpulso - Time.time, 0));
 
 		if( Input.GetMouseButton(0) ) 
 		{
@@ -88,7 +93,12 @@ public class FogueteController : MonoBehaviour
 			impulsoAtual = 0;
 
 		}
-
+		if (temBuffImpulso) {
+			if (Time.time - _timeBuff > 6) {
+				temBuffImpulso = false;
+				tempoImpulso = 1.0f;
+			}
+		}
 		timeLeft -= Time.deltaTime;
 		if ( timeLeft < 0 )
 		{
@@ -111,5 +121,11 @@ public class FogueteController : MonoBehaviour
 		explosao.transform.position = transform.position;
 		Destroy (gameObject);
 		
+	}
+
+	public void buffImpulso(){
+		temBuffImpulso = true;
+		_timeBuff = Time.time; 
+		tempoImpulso = 0.5f;
 	}
 }

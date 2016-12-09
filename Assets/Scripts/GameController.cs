@@ -49,15 +49,23 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void Ponto(){
-		print ("Ponto : " + score);
 		score++;
 		scoreText.text = "Score: "+score;
 	}
+	public void Ponto(int pontos){
+		score += pontos;
+		scoreText.text = "Score: "+score;
+	}
+
 	public void SomColisao(){
 		GetComponent<AudioSource>().PlayOneShot (colisao, 1.0f);
 	}
 
 	public void StopSound(){
 		GetComponent<AudioSource> ().Stop ();
+	}
+
+	public void buffImpulso(){
+		fogueteController.buffImpulso ();
 	}
 }
