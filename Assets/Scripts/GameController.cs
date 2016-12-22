@@ -6,10 +6,10 @@ public class GameController : MonoBehaviour {
 	public GUIText scoreText;
 	public bool restart;
 	private int score;
-	public int lives = 3;
+	public int lives = 3;	
 	private bool gameOver;
 	private bool restartClick;
-	public AudioClip explosao, colisao;
+	public AudioClip explosao, colisao, impulso, item;
 	FogueteController fogueteController;
 	// Use this for initialization
 	void Start () {
@@ -40,21 +40,22 @@ public class GameController : MonoBehaviour {
 		GetComponent<AudioSource>().PlayOneShot (explosao, 1.0f);
 
 		fogueteController.explodir();
-
-		//WaitForSeconds (1);
-		//Time.timeScale = 0;
 		restart = true;
 		gameOverText.text = "Game Over. \nToque em qualquer lugar\n da tela para reiniciar";
 		gameOver = true;
 	}
 
 	public void Ponto(){
-		score++;
-		scoreText.text = "Score: "+score;
+		if (!restart) {
+			score++;
+			scoreText.text = "Score: " + score;
+		}
 	}
 	public void Ponto(int pontos){
-		score += pontos;
-		scoreText.text = "Score: "+score;
+		if (!restart) {
+			score += pontos;
+			scoreText.text = "Score: " + score;
+		}
 	}
 
 	public void SomColisao(){
@@ -66,6 +67,11 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void buffImpulso(){
+		GetComponent<AudioSource>().PlayOneShot (item, 1.0f);
 		fogueteController.buffImpulso ();
+	}
+
+	public void SomImpulso(){
+		GetComponent<AudioSource>().PlayOneShot (impulso, 0.34f);
 	}
 }

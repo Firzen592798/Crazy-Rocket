@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour {
 	void Start () {
 		Spawn ();
 		SpawnPowerup ();
-		Invoke ("IncreaseSpawnRate", "5.0f");
+		Invoke ("IncreaseSpawnRate", 5.0f);
 	}
 
 	void Spawn() {
@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour {
 	}
 
 	void IncreaseSpawnRate(){
-		spawnRate += 0.1;
+		spawnRate += 0.1f;
 	}
 
 	// Update is called once per frame

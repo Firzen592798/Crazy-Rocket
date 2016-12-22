@@ -55,7 +55,6 @@ public class FogueteController : MonoBehaviour
 			
 			if (Time.time > _nextImpulso) 
 			{
-				
 				_targetPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 				_targetPos.z = transform.position.z;
 
@@ -63,11 +62,8 @@ public class FogueteController : MonoBehaviour
 
 				if( _targetPos.y < transform.position.y )
 				{
-
 					_TrocandoSprites.Descendo();
 					//Debug.Log( "descendo" );
-
-
 				}else if( _targetPos.y > transform.position.y )
 				{
 
@@ -75,12 +71,10 @@ public class FogueteController : MonoBehaviour
 					//Debug.Log( "subindo" );
 
 				}
-
+				gameController.SomImpulso ();
 				transform.GetComponent<Rigidbody2D>().AddForce(new Vector2( _targetPos.x - transform.position.x, _targetPos.y - transform.position.y) * moveSpeed);
 				_nextImpulso = Time.time + tempoImpulso;
-
 				//transform.position = Vector3.MoveTowards (transform.position, _targetPos, moveSpeed * Time.deltaTime);
-
 			}
 		
 		}

@@ -21,14 +21,14 @@ public class ObstaculoController : MonoBehaviour {
 			velocidadeX = Random.Range (-0.2f, 0.2f);
 		}
 		this.transform.GetComponent<Rigidbody2D> ().velocity = Vector2.down * speed + Vector2.left * velocidadeX * speed;
+		if (this.transform.localScale.x >= spawner.size * 1.5) {
+			Invoke ("Dividir", Random.Range (1.0f, 4.5f));
+		}
 		//this.transform.GetComponent<Rigidbody2D> ().velocity.x = R	andom.Range(-1, 1) * speed;
 	}
 
 	// Update is called once per frame
-	void Update () {
-		if (this.transform.localScale.x >= spawner.size * 2.0) {
-			Invoke ("Dividir", Random.Range (1.0f, 4.5f));
-		}
+	void Update () {		
 		//this.transform.GetComponent<Rigidbody2D> ().velocity += Vector2.up * speed;
 	}
 
@@ -62,7 +62,7 @@ public class ObstaculoController : MonoBehaviour {
 		GameObject obstaculo = GameObject.Instantiate (obstaculoPrefab) as GameObject;
 		GameObject obstaculo2 = GameObject.Instantiate (obstaculoPrefab) as GameObject;
 		float velX = Random.Range (0.4f, 0.6f);
-
+		Destroy (gameObject);
 		obstaculo.transform.position = transform.position;
 		float tamanho = Random.Range (0.4f, 0.6f) * transform.localScale.x;
 		obstaculo.transform.localScale = new Vector3 (tamanho, tamanho, 1f);
@@ -72,6 +72,6 @@ public class ObstaculoController : MonoBehaviour {
 		//tamanho = Random.Range (0.5f, 1.5f);
 		obstaculo2.transform.localScale = new Vector3 (tamanho, tamanho, 1f);
 		obstaculo2.GetComponent<ObstaculoController> ().velocidadeX = -velX;
-		Destroy (gameObject);
+
 	}
 }
